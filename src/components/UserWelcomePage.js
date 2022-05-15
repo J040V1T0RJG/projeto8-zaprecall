@@ -1,31 +1,13 @@
 import React from "react";
 
 
-function Page (props) {
-
-    const classDisplayNoneActive = "userWelcomePage displayNone";
-    const classDisplayNoneDisabled = "userWelcomePage";
-    const [displayNone, setDisplayNone] = React.useState(classDisplayNoneDisabled);
-
-    function iniciarRecall () {
-       setDisplayNone(classDisplayNoneActive);
-    }
+export default function UserWelcomePage ({displayNoneUserWelcomePage, iniciarRecall}) {
 
     return (
-        <div className={displayNone}>
+        <div className={`userWelcomePage ${displayNoneUserWelcomePage}`}>
             <img src="img/ZapRecall-Recursos/logo.png" ></img>
             <p>ZapRecall</p>
             <button onClick={() => iniciarRecall()}>Iniciar Recall!</button>  
         </div>
-    )
-}
-
-
-
-
-
-export default function UserWelcomePage () {
-    return (
-        <Page />
     )
 }
