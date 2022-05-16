@@ -139,7 +139,7 @@ function Question (props) {
 
 export default function Questions ({implementorCounterFooterRed, implementorCounterFooterYellow, implementorCounterFooterGreen}) {
     return (
-        <div>
+        <div className="spaceQuestionsFooter">
             {dataQuestions.map( (newArrayQuestion, index) => (
                 <Question 
                     questionPosition={index + 1} 
