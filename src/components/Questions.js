@@ -44,8 +44,10 @@ function comparador() {
 function Question (props) {
 
     const [questionPosition, setQuestionPosition] = React.useState("");
+    const [questionPositionColor, setQuestionPositionColor] = React.useState("displayNone");
     const [question, setQuestion] = React.useState("displayNone");
     const [answer, setAnswer] = React.useState("displayNone");
+    const [nameIcon, setNameIcon] = React.useState("add-circle-outline")
     
     function toQuestion () {
         setQuestionPosition("displayNone");
@@ -56,12 +58,67 @@ function Question (props) {
         setAnswer("");
     }
 
+    const [red, setRed] = React.useState("");
+    const [yellow, setYellow] = React.useState("");
+    const [green, setGreen] = React.useState("");
+
+
+    function addClassRed () {
+        setRed("red")
+        setNameIcon("close-circle")
+    }
+
+    function addClassYellow () {
+        setYellow("yellow")
+        setNameIcon("help-circle")
+    }
+
+    function addClassGreen () {
+        setGreen("green")
+        setNameIcon("checkmark-circle")
+    }
+
+    function doubleRed () {
+        props.implementorCounterFooterRed();
+        addClassRed();
+        setQuestionPosition("displayNone");
+        setQuestionPositionColor("");
+        setQuestion("displayNone");
+        setAnswer("displayNone");
+        
+    }
+
+    function doubleYellow () {
+        props.implementorCounterFooterYellow();
+        addClassYellow();
+        setQuestionPosition("displayNone");
+        setQuestionPositionColor("");
+        setQuestion("displayNone");
+        setAnswer("displayNone");
+    }
+
+    function doubleGreen () {
+        props.implementorCounterFooterGreen();
+        addClassGreen();
+        setQuestionPosition("displayNone");
+        setQuestionPositionColor("");
+        setQuestion("displayNone");
+        setAnswer("displayNone");
+    }
+
+
     return (
         <div className="motherQuestions">
             <div className={`questionPosition ${questionPosition}`}>
-                <p>Pergunta {props.questionPosition} </p>
+                <p className={`${red} ${yellow} ${green}`}>Pergunta {props.questionPosition} </p>
                 <ion-icon  name="play-outline" onClick={() => toQuestion()}></ion-icon>
             </div>
+
+            <div className={`questionPosition ${questionPositionColor}`}>
+                <p className={`${red} ${yellow} ${green}`}>Pergunta {props.questionPosition} </p>
+                <ion-icon class={`ionIcon${red}${yellow}${green}`} name={nameIcon}></ion-icon>
+            </div>
+
             
             <div className={`question ${question}`}>
                 <p>{props.question}</p>
@@ -71,20 +128,28 @@ function Question (props) {
             <div className={`answer ${answer}`}>
                 <p>{props.answer}</p>
                 <div className="answerOptions">
-                    <div ><p>Não <br></br> lembrei</p></div>
-                    <div ><p>Quase não lembrei</p></div>
-                    <div ><p>Zap!</p></div>
+                    <div onClick={() => doubleRed()}><p>Não <br></br> lembrei</p></div>
+                    <div onClick={() => doubleYellow()}><p>Quase não lembrei</p></div>
+                    <div onClick={() => doubleGreen()}><p>Zap!</p></div>
                 </div>
             </div>
         </div>
     )
 }
 
-export default function Questions () {
+export default function Questions ({implementorCounterFooterRed, implementorCounterFooterYellow, implementorCounterFooterGreen}) {
     return (
         <div>
             {dataQuestions.map( (newArrayQuestion, index) => (
-                <Question questionPosition={index + 1} question={newArrayQuestion.question} answer={newArrayQuestion.answer}/>
+                <Question 
+                    questionPosition={index + 1} 
+                    question={newArrayQuestion.question} 
+                    answer={newArrayQuestion.answer} 
+                    implementorCounterFooterRed={implementorCounterFooterRed} 
+                    implementorCounterFooterYellow={implementorCounterFooterYellow} 
+                    implementorCounterFooterGreen={implementorCounterFooterGreen} 
+
+                />
             ))}
         </div>
     )

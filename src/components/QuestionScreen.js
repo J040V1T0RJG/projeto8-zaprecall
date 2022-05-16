@@ -4,10 +4,23 @@ import Footer from "./Footer"
 
 export default function QuestionScreen ({displayNoneQuestionScreen}) {
 
-    const [counter, setCounter] = React.useState(2)
+    const [counter, setCounter] = React.useState(0);
+    const [counterRed, setCounterRed] = React.useState(0);
+    const [statusOrder, setStatusOrder] = React.useState([]);
+    
 
-    function implementorCounterFooter () {
+    function implementorCounterFooterRed () {
         setCounter(counter + 1)
+        setCounterRed(counterRed + 1)
+        setStatusOrder([...statusOrder, "redIcon"])
+    }
+    function implementorCounterFooterYellow () {
+        setCounter(counter + 1)
+        setStatusOrder([...statusOrder, "yellowIcon"])
+    }
+    function implementorCounterFooterGreen () {
+        setCounter(counter + 1)
+        setStatusOrder([...statusOrder, "greenIcon"])
     }
 
 
@@ -18,8 +31,12 @@ export default function QuestionScreen ({displayNoneQuestionScreen}) {
                 <img src="img/ZapRecall-Recursos/logo-pequeno.png"></img>
                 <p>ZapRecall</p>
             </div>
-            <Questions />
-            <Footer counter={counter}/>
+            <Questions  
+                implementorCounterFooterRed={implementorCounterFooterRed} 
+                implementorCounterFooterYellow={implementorCounterFooterYellow} 
+                implementorCounterFooterGreen={implementorCounterFooterGreen} 
+            />
+            <Footer statusOrder={statusOrder} counter={counter} counterRed={counterRed}/> 
         </div>
     )
 }

@@ -127,6 +127,28 @@ body {
     left: 15px;
 
     color: #333333;
+
+}
+
+.questionPosition p.red {
+    color: #FF3030;
+    text-decoration-line: line-through #FF3030;
+    text-decoration-color: #FF3030; 
+ 
+}
+
+.questionPosition  p.yellow{
+    color: #FF922E;
+    text-decoration-line: line-through #FF922E;
+    text-decoration-color: #FF922E; 
+    
+}
+
+.questionPosition  p.green {
+    color: #2FBE34;
+    text-decoration-line: line-through #2FBE34;
+    text-decoration-color: #2FBE34; 
+    
 }
 
 .questionPosition ion-icon {
@@ -262,26 +284,74 @@ body {
     bottom: 0px;
 
     width: 100vw;
-    height: 70px;
+   /* height: 70px;*/
     background: #FFFFFF;
     box-shadow: 0px -4px 6px rgba(0, 0, 0, 0.05);
 
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
    
 }
 .footer p {
-    width: 150px;
-    height: 22px;
+  /**  width: 150px;
+    height: 22px;*/
 
     font-family: 'Recursive';
     font-style: normal;
     font-weight: 400;
     font-size: 18px;
     line-height: 22px;
+    text-align: center;
+    padding: 10px 0px 10px 0px;
 
     color: #333333;
+}
+.footer .ionIconOrder {
+    display: flex;
+}
+
+.organizeFather {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.footer .organize {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 200px;
+}
+.footer .organize img {
+    margin-right: 10px;
+}
+
+ion-icon.ionIconred {
+    width: 23px;
+    height: 23px;
+
+    color: #FF3030;
+    visibility: visible;
+}
+
+ion-icon.ionIconyellow {
+    width: 23px;
+    height: 23px;
+
+    color: #FF922E;
+    visibility: visible;
+    
+}
+
+ion-icon.ionIcongreen {
+    width: 23px;
+    height: 23px;
+
+    color: #2FBE34;
+    visibility: visible;
 }
 
 
